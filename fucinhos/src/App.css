@@ -1,0 +1,15 @@
+@theme{
+  --font-fredoka: 'Fredoka', sans-serif;
+  --font-nunito: "Nunito", sans-serif;
+
+  --color-creme:#FFFBF4 ;
+  --color-cartoesbg: #FFFFFF;
+  --color-roxo-escuro: #3B2F52;
+  --color-roxo-: #7B5AD9;
+  --color-lilas-pastel: #EDE6FF;
+  --color-amarelo-pastel: #FFF2C8;
+  --color-rosa-pastel: #FFE3EE;
+  --color-menta-pastel: #DFF3E9;
+  --color-rosabg: #FBEAF6;
+  --color-dv: #3B2F52;
+}
