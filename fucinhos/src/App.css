@@ -13,7 +13,21 @@
   --color-menta-pastel: #DFF3E9;
   --color-rosabg: #FBEAF6;
   --color-dv: #3B2F52;
+
+      --animate-float: float 4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+  }
 }
+
+
 
 
 @layer components{
@@ -22,5 +36,36 @@
     max-width: 1280px;
     margin-inline: auto;
     padding-inline: 1.5rem;
+  }
+
+  .detail1{
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: -30px;
+    background: url(../public/dogcapa3.jpg);
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+
+    .detail2{
+    content: '';
+    position: absolute;
+    bottom:-25px;
+    right: -50px;
+    background: url(../public/catcapa.jpg);
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+
+  .background{
+    background: #EDE6FF;
+    background: linear-gradient(50deg, rgba(237, 230, 255, 1) 0%, rgba(255, 242, 200, 1) 100%)
   }
 }

@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router'
+import patinha from '../../public/logopatinhas.png'
 export const Header = () => {
   const [menuAberto, setMenuAberto] = useState(false)
   return (
-    <header className='border-b border-roxo-escuro/20 bg-amarelo-pastel/20'>
+    <header className='border-b border-roxo-escuro/20 background'>
       <section className='container'>
         <nav className=' flex justify-between items-center py-5'>
-          <h2 className='font-fredoka font-bold text-2xl'>Fucinhos</h2>
+          <div className='flex gap-2'>
+            <span className=''><img className='w-8' src={patinha} alt="" /></span>
+            <h2 className='font-fredoka font-bold text-2xl'>Fucinhos</h2>
+          </div>
           <ul className=' hidden md:flex gap-5 items-center **:hover:text-roxo font-fredoka'>
             <li><a className='' href="#">Planos</a></li>
             <li><a href="#planos">Coberturas</a></li>
             <li><a href="#matilha">A matilha</a></li>
             <li><a href="#duvidas">Dúvidas</a></li>
-            <Link className='font-medium border rounded-2xl py-2 px-4 hover:bg-roxo/15' to='/planos'>Contratar</Link>
+            <Link className='font-medium border rounded-2xl py-2 px-4 hover:bg-roxo/15' to='/contratar'>Contratar</Link>
           </ul>
 
            <button
@@ -30,7 +34,7 @@ export const Header = () => {
             <li><a href="#planos">Coberturas</a></li>
             <li><a href="#matilha">A matilha</a></li>
             <li><a href="#duvidas">Dúvidas</a></li>
-            <Link className='font-medium border rounded-2xl py-2 px-4 hover:bg-roxo/15' to='/planos'>Contratar</Link>
+            <Link className='font-medium border rounded-2xl py-2 px-4 hover:bg-roxo/15' to='/contratar'>Contratar</Link>
             </ul>          
         )}
         </nav>
