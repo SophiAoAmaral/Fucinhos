@@ -9,12 +9,13 @@ function App() {
 
   return (
     <>
+    <Header className='font'/>
       <Routes>
-        <Header/>
           <Route path='/contratar' element={<Plano/>}/>
-        <Footer/>
       </Routes>
+      <Footer/>
     </>
+
   )
 }
 
