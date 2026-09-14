@@ -9,7 +9,7 @@ export const Header = () => {
         <nav className=' flex justify-between items-center py-5'>
           <div className='flex gap-2'>
             <span className=''><img className='w-8' src={patinha} alt="" /></span>
-            <h2 className='font-fredoka font-bold text-2xl'>Fucinhos</h2>
+            <Link to='/' className='font-fredoka font-bold text-2xl'>Fucinhos</Link>
           </div>
           <ul className=' hidden md:flex gap-5 items-center **:hover:text-roxo font-fredoka'>
             <li><a className='' href="#">Planos</a></li>

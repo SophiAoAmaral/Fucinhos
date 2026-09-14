@@ -3,6 +3,11 @@ import dog1 from '../../public/dogcapa.jpg'
 import {Link} from 'react-router'
 
 export const Home = () => {
+    const infos = [
+        {title:'2.400+', text:'clínicas na rede'},
+        {title:'24h', text:'emergência, todo dia'},
+        {title:'15%', text:'off do 2º pet em diante'},
+        {title:'3 min', text:'para contratar o plano'}]
   return (
     <section className='background'>
         <section className='container py-6 md:py-20'>
@@ -19,11 +24,21 @@ export const Home = () => {
                     <span className='text-roxo-escuro/70  text-xs md:text-sm'> Sem carência para consultas · Cancele quando quiser · Pets de qualquer idade</span>
                 </div>
                 <div className='h-[600px] relative hidden md:inline-block'>
-                    <img src={dog1} className='h-[100%]' alt="" />
-                    <span className='detail1 animate-float'></span>
-                    <span className='detail2 animate-float'></span>
+                    <img src={dog1} className='h-[100%] rounded-4xl' alt="" />
+                    <span className='detail1 animate-float border-6 border-white '></span>
+                    <span className='detail2 animate-float border-6 border-white '></span>
                 </div>
             </div>
+
+
+            <artcile className='flex bg-roxo/35 py-10 rounded-4xl mt-30 gap-20 text-center items-center justify-center'>
+                {infos.map((info)=>(
+                    <div>
+                        <h3 className='font-bold font-fredoka text-5xl text-roxo-escuro'>{info.title}</h3>
+                        <span className='text-black/50'>{info.text}</span>
+                    </div>
+                ))}
+            </artcile>
         </section>
     </section>
   )
