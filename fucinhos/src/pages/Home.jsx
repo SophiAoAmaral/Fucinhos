@@ -1,5 +1,6 @@
 import React from 'react';
 import dog1 from '../../public/dogcapa.jpg'
+import patinha from '../../public/assets/favicon.png'
 import {Link} from 'react-router'
 import { Planos } from '../components/Planos';
 import { Coberturas } from '../components/Coberturas';
@@ -112,6 +113,26 @@ export const Home = () => {
         </div>
 
         <Coberturas/>
+
+
+        <article className='grid grid-cols-2 bg-menta-pastel'>
+          <div>
+            <span>PARA TODA A FAMÍLIA</span>
+            <p>Todos os seus pets, uma só fatura</p>
+            <p>Cada pet conta com seu próprio plano, carteirinha digital e histórico de atendimento. Você reúne tudo em uma única cobrança e mantém os cuidados da família sempre organizados.</p>
+            <ul>
+              <li className='flex'><span><img src={patinha}  className='w-5' alt="" /></span>15% de desconto a partir do segundo pet</li>
+              <li className='flex'><span><img src={patinha}  className='w-5' alt="" /></span>20% de desconto a partir do quarto pet</li>
+              <li className='flex'><span><img src={patinha}  className='w-5' alt="" /></span>Um plano diferente para cada necessidade</li>
+              <li className='flex'><span><img src={patinha}  className='w-5' alt="" /></span>Carteirinha digital individual</li>
+            </ul>
+            <span>Mais cuidado, menos complição</span>
+          </div>
+
+          <div>
+
+          </div>
+        </article>
       </section>
     </section>
   );

@@ -124,7 +124,7 @@ export const Planos = () => {
 
                         <ul className='mt-4'>
                             {mes.beneficios.map((items)=>(
-                                <li className='flex gap-2 items-center mb-2'>
+                                <li className='flex gap-2 items-center mb-2 pb-2'>
                                     <FaCheckCircle className="shrink-0 text-[#7B5AD9]" />
                                     
                                 <span>{items}</span>
