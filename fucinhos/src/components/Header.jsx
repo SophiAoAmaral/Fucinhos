@@ -29,9 +29,9 @@ export const Header = () => {
     
     
         {menuAberto && (
-            <ul className='md:hidden text-center md:text-start absolute top-16 right-0 bg-surface text-ink rounded-xl shadow-lg p-6 flex flex-col gap-4 min-w-48'>
-              <li><a className='' href="#">Planos</a></li>
-            <li><a href="#planos">Coberturas</a></li>
+            <ul className='md:hidden text-center md:text-start absolute top-16 right-0 bg-surface text-ink rounded-xl shadow-lg p-6 flex flex-col gap-4 min-w-48 bg-white'>
+            <li><a className='' href="#planos">Planos</a></li>
+            <li><a href="#coberturas">Coberturas</a></li>
             <li><a href="#matilha">A matilha</a></li>
             <li><a href="#duvidas">Dúvidas</a></li>
             <Link className='font-medium border rounded-2xl py-2 px-4 hover:bg-roxo/15' to='/contratar'>Contratar</Link>

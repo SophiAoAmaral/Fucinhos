@@ -6,9 +6,9 @@ export const Planos = () => {
     const [plano, setPlano] = useState(true);
 
     const mensal =[
-        {id:'miúdo', nome:'Petisco', img:'../../public/planos/plano1.jpg', desc:'O básico bem feito para pets saudáveis e rotina em dia.', preco:49, beneficios:['4 consultas durante 12 meses', 'Vacinas anuais incluídas', 'Exames simples de rotina', 'Teleorientação 24h']},
-        {id:'completo', nome:'Patinha', img:'../../public/planos/plano2.jpg', desc:'Rotina completa mais o susto de madrugada coberto.', preco:89, beneficios:['Consultas ilimitadas', 'Emergência 24h na rede toda', 'Exames de imagem e laboratório', 'Castração e cirurgias simples']},
-        {id:'sem limite', nome:'Xodó', img:'../../public/planos/plano3.jpg', desc:'Para idosos, crônicos e para quem não quer pensar em teto.', preco:149, beneficios:['Tudo do Patinha, sem teto anual', 'Cirurgias complexas e internação', 'Fisioterapia e tratamento contínuo', 'Transporte para consultas veterinárias']},
+        {id:'miúdo', nome:'Petisco', img:`${import.meta.env.BASE_URL}planos/plano1.jpg`, desc:'O básico bem feito para pets saudáveis e rotina em dia.', preco:49, beneficios:['4 consultas durante 12 meses', 'Vacinas anuais incluídas', 'Exames simples de rotina', 'Teleorientação 24h']},
+        {id:'completo', nome:'Patinha', img:`${import.meta.env.BASE_URL}planos/plano2.jpg`, desc:'Rotina completa mais o susto de madrugada coberto.', preco:89, beneficios:['Consultas ilimitadas', 'Emergência 24h na rede toda', 'Exames de imagem e laboratório', 'Castração e cirurgias simples']},
+        {id:'sem limite', nome:'Xodó', img:`${import.meta.env.BASE_URL}planos/plano3.jpg`, desc:'Para idosos, crônicos e para quem não quer pensar em teto.', preco:149, beneficios:['Tudo do Patinha, sem teto anual', 'Cirurgias complexas e internação', 'Fisioterapia e tratamento contínuo', 'Transporte para consultas veterinárias']},
     ];
     const anual = [
   {
@@ -64,7 +64,7 @@ export const Planos = () => {
     
 
   return (
-    <section className='mt-30'>
+    <section className='md:mt-30 mt-10'>
 
         <div className='text-center'>  
             <span className='uppercase text-roxo font-nunito'>Planos</span>
@@ -75,10 +75,10 @@ export const Planos = () => {
             <button onClick={()=> setPlano(true)} className={plano ? 'bg-roxo text-white' : 'bg-roxo/30 text-roxo-escuro'}>Mensal</button>
             <button onClick={()=> setPlano(false)} className={!plano ? 'bg-roxo text-white' : 'bg-roxo/30 text-roxo-escuro'}>Anual</button>
         </div>
-        <span className='text-center  inline-block my-3 border border-amarelo-pastel bg-amarelo-pastel py-2 px-4 rounded-2xl text-roxo-escuro font-fredoka'>2 meses grátis no anual</span>
+        <span className='text-center block my-3 border border-amarelo-pastel bg-amarelo-pastel py-2 px-4 rounded-2xl text-roxo-escuro font-fredoka w-fit mx-auto'> 🎉 2 meses grátis no anual</span>
 
         {plano ? (
-            <article className='grid grid-cols-3 gap-7 items-center justify-center font-nunito '>
+            <article className='grid md:grid-cols-3 gap-7 items-center justify-center font-nunito '>
                 {mensal.map((mes)=>(
                     <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-100 p-6 rounded-2xl teste `} key={mes.id}>
                         <div className='flex gap-2 items-center'>
@@ -105,7 +105,7 @@ export const Planos = () => {
                 ))}
             </article>
         ) : (
-            <article className='grid grid-cols-3 gap-7 items-center justify-center font-nunito'>
+            <article className='grid md:grid-cols-3 gap-7 items-center justify-center font-nunito'>
                 {anual.map((mes)=>(
                     <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-110 p-6 rounded-2xl teste`} key={mes.id}>
                         <div className='flex gap-3 items-center text-roxo-escuro'>
