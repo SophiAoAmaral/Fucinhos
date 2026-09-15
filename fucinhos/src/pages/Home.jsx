@@ -1,6 +1,7 @@
 import React from 'react';
 import dog1 from '../../public/dogcapa.jpg'
 import {Link} from 'react-router'
+import { Planos } from '../components/Planos';
 
 export const Home = () => {
     const infos = [
@@ -8,6 +9,13 @@ export const Home = () => {
         {title:'24h', text:'emergência, todo dia'},
         {title:'15%', text:'off do 2º pet em diante'},
         {title:'3 min', text:'para contratar o plano'}]
+
+    const turminha = [
+        {nome:'Nina', desc: 'Golden , 3 anos', img: '../../public/pets/nina.jpg'},
+        {nome:'Joaquim', desc: 'S/R , 6 anos', img: '../../public/pets/joaquim.jpg'},
+        {nome:'Lunna', desc: 'Yorkshire , 9 anos', img: '../../public/pets/lunna.jpg'},
+        {nome:'Tobias', desc: 'S/R , 5 anos', img: '../../public/pets/tobias.jpg'}
+    ]
   return (
     <section className='background'>
         <section className='container py-6 md:py-20'>
@@ -39,6 +47,25 @@ export const Home = () => {
                     </div>
                 ))}
             </artcile>
+
+            <section id='matilha' className='mt-20 text-center'>
+                    <span className='text-roxo mb-5'>A TURMINHA FUCINHOS</span>
+                    <p className='font-fredoka text-roxo-escuro font-bold text-4xl mb-2'>Carinho que se multiplica </p>
+                    <p className='mb-7 text-sm'>Cada pet tem seu jeito especial de tornar nossos dias mais felizes.</p>
+                    <div className='flex gap-6 items-center justify-center'>
+                        {
+                            turminha.map((pet)=>(
+                                <div className='flex flex-col text-center'>
+                                    <img src={pet.img} alt={pet.nome} className='w-50 border-7 border-white rounded-[50%] h-50 object-cover mb-3'/>
+                                    <h3 className='font-fredoka font-semibold text-roxo-escuro'>{pet.nome}</h3>
+                                    <span className='text-black/40 font-nunito text-sm'>{pet.desc}</span>
+                                </div>
+                            ))
+                        }
+                    </div>
+            </section>
+
+            <Planos/>
         </section>
     </section>
   )
