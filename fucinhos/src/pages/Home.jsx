@@ -49,9 +49,9 @@ export const Home = () => {
             </artcile>
 
             <section id='matilha' className='mt-20 text-center'>
-                    <span className='text-roxo mb-5'>A TURMINHA FUCINHOS</span>
+                    <span className='text-roxo mb-5 font-nunito'>A TURMINHA FUCINHOS</span>
                     <p className='font-fredoka text-roxo-escuro font-bold text-4xl mb-2'>Carinho que se multiplica </p>
-                    <p className='mb-7 text-sm'>Cada pet tem seu jeito especial de tornar nossos dias mais felizes.</p>
+                    <p className='mb-7 text-sm font-nunito' >Cada pet tem seu jeito especial de tornar nossos dias mais felizes.</p>
                     <div className='flex gap-6 items-center justify-center'>
                         {
                             turminha.map((pet)=>(
