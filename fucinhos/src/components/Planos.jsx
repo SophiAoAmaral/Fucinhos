@@ -80,7 +80,7 @@ export const Planos = () => {
         {plano ? (
             <article className='grid grid-cols-3 gap-7 items-center justify-center font-nunito '>
                 {mensal.map((mes)=>(
-                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-100 p-6 rounded-2xl`} key={mes.id}>
+                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-100 p-6 rounded-2xl teste `} key={mes.id}>
                         <div className='flex gap-2 items-center'>
                             <img src={mes.img} alt=""className='w-20  h-20 object-cover rounded-[50%]' />
                                 <div>                           
@@ -107,7 +107,7 @@ export const Planos = () => {
         ) : (
             <article className='grid grid-cols-3 gap-7 items-center justify-center font-nunito'>
                 {anual.map((mes)=>(
-                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-120 p-6`} key={mes.id}>
+                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-110 p-6 rounded-2xl teste`} key={mes.id}>
                         <div className='flex gap-3 items-center text-roxo-escuro'>
                             <img src={mes.img} alt="" className='w-20  h-20 object-cover rounded-[50%]'/>
                                 <div>                           
@@ -119,7 +119,7 @@ export const Planos = () => {
                         <p className='text-black/50'>R$ <span className='text-4xl font-fredoka font-semibold text-roxo-escuro'>{mes.preco}</span> /mês por pet</p>
                         <p className='mt-1 text-sm'>Total <span className='font-fredoka font-semibold'>R${mes.valorTotal},00</span> econimia de <span className='font-fredoka font-semibold'> R${mes.economia},00</span></p>
                         
-                        <span className='text-sm my-2 block'>Cobrado uma vez por ano  2 meses grátis inclusos.</span>
+                        <span className='text-sm my-2 block text-black/50'>Cobrado uma vez por ano  2 meses grátis inclusos.</span>
 
 
                         <ul className='mt-4'>
@@ -135,7 +135,7 @@ export const Planos = () => {
                 ))}
             </article>
         )}
-        <Link to='/contratar'>Contratar um dos planos</Link>
+        <Link to='/contratar' className='text-center mt-5 block border border-roxo bg-roxo text-creme w-fit mx-auto py-4 px-8 font-nunito hover:bg-purple-800 rounded-2xl '>Contratar um dos planos</Link>
     </section>
   )
 }

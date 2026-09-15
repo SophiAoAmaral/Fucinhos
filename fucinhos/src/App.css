@@ -31,6 +31,10 @@
 
 
 @layer components{
+
+  html {
+    scroll-behavior: smooth;
+}
   .container {
     width: 100%;
     max-width: 1280px;
@@ -67,5 +71,12 @@
   .background{
     background: #EDE6FF;
     background: linear-gradient(50deg, rgba(237, 230, 255, 1) 0%, rgba(255, 242, 200, 1) 100%)
+  }
+
+  .teste{
+    transition: transform 0.5s;
+  }
+  .teste:hover{
+    transform: scale(1.08);
   }
 }

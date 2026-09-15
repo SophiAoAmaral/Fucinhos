@@ -65,7 +65,9 @@ export const Home = () => {
                     </div>
             </section>
 
-            <Planos/>
+            <div id='planos'>
+                <Planos />
+            </div>
         </section>
     </section>
   )
