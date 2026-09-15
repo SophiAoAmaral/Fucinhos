@@ -2,6 +2,7 @@ import React from 'react';
 import dog1 from '../../public/dogcapa.jpg'
 import {Link} from 'react-router'
 import { Planos } from '../components/Planos';
+import { Coberturas } from '../components/Coberturas';
 
 export const Home = () => {
     const infos = [
@@ -109,6 +110,8 @@ export const Home = () => {
         <div id="planos">
           <Planos />
         </div>
+
+        <Coberturas/>
       </section>
     </section>
   );

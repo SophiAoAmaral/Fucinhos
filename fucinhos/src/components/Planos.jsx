@@ -14,7 +14,7 @@ export const Planos = () => {
   {
     id: "miúdo",
     nome: "Petisco",
-    img: "../../public/planos/plano1.jpg",
+    img: `${import.meta.env.BASE_URL}planos/plano1.jpg`,
     desc: "O básico bem feito para pets saudáveis e rotina em dia.",
     preco: 41,
     valorTotal: 490,
@@ -30,7 +30,7 @@ export const Planos = () => {
   {
     id: "completo",
     nome: "Patinha",
-    img: "../../public/planos/plano2.jpg",
+    img: `${import.meta.env.BASE_URL}planos/plano2.jpg`,
     desc: "Rotina completa e proteção para os imprevistos.",
     preco: 74,
     valorTotal: 890,
@@ -46,7 +46,7 @@ export const Planos = () => {
   {
     id: "sem limite",
     nome: "Xodó",
-    img: "../../public/planos/plano3.jpg",
+    img: `${import.meta.env.BASE_URL}planos/plano3.jpg`,
     desc: "Para pets idosos, crônicos ou que precisam de cuidados especiais.",
     preco: 124,
     valorTotal: 1490,
@@ -75,7 +75,7 @@ export const Planos = () => {
             <button onClick={()=> setPlano(true)} className={plano ? 'bg-roxo text-white' : 'bg-roxo/30 text-roxo-escuro'}>Mensal</button>
             <button onClick={()=> setPlano(false)} className={!plano ? 'bg-roxo text-white' : 'bg-roxo/30 text-roxo-escuro'}>Anual</button>
         </div>
-        <span className='text-center block my-3 border border-amarelo-pastel bg-amarelo-pastel py-2 px-4 rounded-2xl text-roxo-escuro font-fredoka w-fit mx-auto'> 🎉 2 meses grátis no anual</span>
+        <span className='text-center block my-3 border border-amarelo-pastel bg-amarelo-pastel py-2 px-4 rounded-2xl text-roxo-escuro font-fredoka w-fit mx-auto'>  2 meses grátis no anual</span>
 
         {plano ? (
             <article className='grid md:grid-cols-3 gap-7 items-center justify-center font-nunito '>
