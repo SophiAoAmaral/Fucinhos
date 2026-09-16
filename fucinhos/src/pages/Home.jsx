@@ -164,7 +164,7 @@ export const Home = () => {
         <Faq/>
 
 
-        <section className='container bg-roxo/30 md:w-180  font-nunito md:text-center mb-20 p-8 md:p-15 flex flex-col justify-center items-center md:rounded-4xl'>
+        <section className='container bg-roxo/30 md:w-180  font-nunito md:text-center md:mb-20 p-8 md:p-15 pb-10 flex flex-col justify-center items-center md:rounded-4xl'>
           <span className='w-15 bg-white rounded-[50%] inline-block'><img src={patinha} alt="" /></span>
                 <h2 className='text-roxo-escuro font-fredoka text-4xl font-semibold md:w-90 mb-5 mt-5'>Proteja quem faz parte da sua família.</h2>
                 <p className='text-roxo-escuro'>Cadastre seu pet em poucos minutos e tenha acesso a uma plataforma completa para acompanhar sua saúde, histórico e informações importantes sempre que precisar.</p>
@@ -174,7 +174,7 @@ export const Home = () => {
                 </div>
         </section>
 
-        <section className='h-5'></section>
+        <section className='h-5 hidden md:block'></section>
        
     </section>
   );
