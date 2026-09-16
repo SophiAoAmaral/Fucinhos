@@ -53,7 +53,7 @@ export const Coberturas = () => {
       },
     ];
   return (
-    <section className='my-20 font-nunito'>
+    <section className='mt-10 md:mt-0 md:my-20 font-nunito'>
         <span className='uppercase text-roxo text-sm text-center block'>O que está coberto</span>
         <h2 className='text-center font-fredoka text-3xl font-semibold'>Da consulta de rotina ao susto de madrugada</h2>
         <span className=' md:hidden text-center block mt-5 font-semibold text-roxo-escuro'>Deslize para ver mais</span>

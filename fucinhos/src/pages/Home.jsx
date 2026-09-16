@@ -7,6 +7,7 @@ import { Coberturas } from '../components/Coberturas';
 import pets from '../../public/pets.jpg'
 import pets2 from '../../public/pets2.jpg'
 import { Faq } from '../components/Faq';
+import { comentarios } from '../obj/coments';
 
 export const Home = () => {
     const infos = [
@@ -117,8 +118,9 @@ export const Home = () => {
 
         <Coberturas/>
 
+      </section>
 
-        <article className='grid md:grid-cols-2 bg-menta-pastel md:h-105  rounded-4xl w-[90%] m-auto'>
+        <article className='grid md:grid-cols-2 bg-menta-pastel md:h-105  md:rounded-4xl md:w-[90%] m-auto'>
           <div className='md:p-10 px-5 font-nunito text-center md:text-start'>
             <span className='uppercase text-roxo text-xs font-semibold pt-10 md:pt-0 block '>PARA TODA A FAMÍLIA</span>
             <p className='font-fredoka text-roxo-escuro font-semibold text-2xl md:text-4xl my-3 '>Todos os seus pets, uma só fatura</p>
@@ -142,14 +144,24 @@ export const Home = () => {
           </div>
         </article>
 
-        <Faq/>
-      </section>
-
-      <div className='h-100  bg-amarelo-pastel mb-10'>
-
+      <div className='  bg-amarelo-pastel mb-10 md:p-15 font-nunito mt-5 md:mt-20'>
+            <div className='container pt-9 pb-10 md:pt-0 md:pb-0' >
+              <span className='text-center block uppercase text-roxo font-semibold'>Quem usa recomenda</span>
+              <h2 className='text-center font-fredoka text-3xl font-semibold text-roxo-escuro/90'>Cuidar dos seus pets ficou muito mais simples</h2>
+              <div className='flex flex-wrap md:flex-nowrap md:justify-center md:items-center gap-6 mt-7 '>
+                {
+                  comentarios.map((comentario)=>(
+                    <div className='bg-white p-5 w-80 rounded-2xl '>
+                      <p className='font-fredoka font-medium text-roxo-escuro'>"{comentario.texto}"</p>
+                        <span className='flex items-center gap-3 mt-4 text-sm text-roxo-escuro/80'><img src={comentario.img} alt="" className='w-10 h-10 rounded-[50%] object-cover'/>{comentario.nome}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
       </div>
 
-
+        <Faq/>
        
     </section>
   );
