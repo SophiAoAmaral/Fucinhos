@@ -148,7 +148,7 @@ export const Home = () => {
             <div className='container pt-9 pb-10 md:pt-0 md:pb-0' >
               <span className='text-center block uppercase text-roxo font-semibold'>Quem usa recomenda</span>
               <h2 className='text-center font-fredoka text-3xl font-semibold text-roxo-escuro/90'>Cuidar dos seus pets ficou muito mais simples</h2>
-              <div className='flex flex-wrap md:flex-nowrap md:justify-center md:items-center gap-6 mt-7 '>
+              <div className='flex flex-wrap md:flex-nowrap justify-center items-center gap-6 mt-7 '>
                 {
                   comentarios.map((comentario)=>(
                     <div className='bg-white p-5 w-80 rounded-2xl '>
