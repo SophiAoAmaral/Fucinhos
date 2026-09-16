@@ -6,6 +6,7 @@ import { Planos } from '../components/Planos';
 import { Coberturas } from '../components/Coberturas';
 import pets from '../../public/pets.jpg'
 import pets2 from '../../public/pets2.jpg'
+import { Faq } from '../components/Faq';
 
 export const Home = () => {
     const infos = [
@@ -140,6 +141,8 @@ export const Home = () => {
               </div>
           </div>
         </article>
+
+        <Faq/>
       </section>
     </section>
   );
