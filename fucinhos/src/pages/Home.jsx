@@ -118,21 +118,21 @@ export const Home = () => {
         <Coberturas/>
 
 
-        <article className='grid md:grid-cols-2 bg-menta-pastel md:h-100  rounded-4xl w-[90%] m-auto'>
+        <article className='grid md:grid-cols-2 bg-menta-pastel md:h-105  rounded-4xl w-[90%] m-auto'>
           <div className='md:p-10 px-5 font-nunito text-center md:text-start'>
             <span className='uppercase text-roxo text-xs font-semibold pt-10 md:pt-0 block '>PARA TODA A FAMÍLIA</span>
             <p className='font-fredoka text-roxo-escuro font-semibold text-2xl md:text-4xl my-3 '>Todos os seus pets, uma só fatura</p>
-            <p className='text-black/60 text-sm md:w-140 mb-5'>Cada pet conta com seu próprio plano, carteirinha digital e histórico de atendimento. Você reúne tudo em uma única cobrança e mantém os cuidados da família sempre organizados.</p>
+            <p className='text-black/60 text-sm md:w-130 mb-5'>Cada pet conta com seu próprio plano, carteirinha digital e histórico de atendimento. Você reúne tudo em uma única cobrança e mantém os cuidados da família sempre organizados.</p>
             <ul className='mb-3 **:pb-1 text-black/60 text-sm md:text-base text-start '>
               <li className='flex gap-2'><span><img src={patinha}  className='w-5' alt="" /></span>15% de desconto a partir do segundo pet</li>
               <li className='flex gap-2'><span><img src={patinha}  className='w-5' alt="" /></span>20% de desconto a partir do quarto pet</li>
               <li className='flex gap-2'><span><img src={patinha}  className='w-5' alt="" /></span>Um plano diferente para cada necessidade</li>
               <li className='flex gap-2'><span><img src={patinha}  className='w-5' alt="" /></span>Carteirinha digital individual</li>
             </ul>
-            <span className='block text-center text-sm text-roxo-escuro/60 pb-5 md:pb-0'>Mais cuidado, menos complição</span>
+            <span className='block text-center text-sm text-roxo-escuro/60 pb-5 md:pb-0 mb-5'>Mais cuidado, menos complição</span>
           </div>
 
-          <div className='hidden m:grid md:grid-cols-2 md:p-10 p-5 gap-3 md:pl-6'>
+          <div className='hidden md:grid md:grid-cols-2 md:p-10 p-5 gap-3 md:pl-6'>
               <div className='relative'>
                 <img src={pets} alt="" className='md:h-70  object-cover md:absolute top-4 rounded-2xl shadow-2xl'/>
               </div>
@@ -144,6 +144,13 @@ export const Home = () => {
 
         <Faq/>
       </section>
+
+      <div className='h-100  bg-amarelo-pastel mb-10'>
+
+      </div>
+
+
+       
     </section>
   );
 }
