@@ -25,8 +25,8 @@ export const Home = () => {
   return (
     <section className="background">
       <section className="container py-6 md:py-20">
-        <div className="grid grid-cols-[1fr_auto] text-center md:text-start md:gap-10 font-fredoka">
-          <div className="md:pt-20">
+        <div className="grid grid-cols-[1fr_auto] text-center md:text-start md:gap-10 font-fredoka fadeUp ">
+          <div className="md:pt-20 ">
             <span className="bg-amarelo-pastel rounded-2xl py-2 px-4 text-roxo-escuro text-sm font-semibold ">
               Feito para casas com muitos fucinhos
             </span>
@@ -67,7 +67,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <artcile className="hidden md:flex flex-wrap bg-roxo/35 py-10 rounded-4xl mt-30 gap-20 text-center items-center justify-center">
+        <artcile className="hidden md:flex flex-wrap  bg-roxo/35 py-10 rounded-4xl mt-30 gap-20 text-center items-center justify-center">
           {infos.map((info) => (
             <div>
               <h3 className="font-bold font-fredoka md:text-5xl text-roxo-escuro">
@@ -78,8 +78,8 @@ export const Home = () => {
           ))}
         </artcile>
 
-        <section id="matilha" className=" mt-10 md:mt-20 text-center">
-          <span className="text-roxo mb-5 font-nunito">
+        <section id="matilha" className=" mt-10 md:mt-20 text-center fadeUp ">
+          <span className="text-roxo mb-5 font-nunito font-bold">
             A TURMINHA FUCINHOS
           </span>
           <p className="font-fredoka text-roxo-escuro font-bold text-4xl mb-2">
@@ -122,7 +122,7 @@ export const Home = () => {
 
         <article className='grid md:grid-cols-2 bg-menta-pastel md:h-105  md:rounded-4xl md:w-[90%] m-auto'>
           <div className='md:p-10 px-5 font-nunito text-center md:text-start'>
-            <span className='uppercase text-roxo text-xs font-semibold pt-10 md:pt-0 block '>PARA TODA A FAMÍLIA</span>
+            <span className='uppercase text-roxo text-xs font-bold pt-10 md:pt-0 block '>PARA TODA A FAMÍLIA</span>
             <p className='font-fredoka text-roxo-escuro font-semibold text-2xl md:text-4xl my-3 '>Todos os seus pets, uma só fatura</p>
             <p className='text-black/60 text-sm md:w-130 mb-5'>Cada pet conta com seu próprio plano, carteirinha digital e histórico de atendimento. Você reúne tudo em uma única cobrança e mantém os cuidados da família sempre organizados.</p>
             <ul className='mb-3 **:pb-1 text-black/60 text-sm md:text-base text-start '>
@@ -162,6 +162,19 @@ export const Home = () => {
       </div>
 
         <Faq/>
+
+
+        <section className='container bg-roxo/30 md:w-180  font-nunito md:text-center mb-20 p-8 md:p-15 flex flex-col justify-center items-center md:rounded-4xl'>
+          <span className='w-15 bg-white rounded-[50%] inline-block'><img src={patinha} alt="" /></span>
+                <h2 className='text-roxo-escuro font-fredoka text-4xl font-semibold md:w-90 mb-5 mt-5'>Proteja quem faz parte da sua família.</h2>
+                <p className='text-roxo-escuro'>Cadastre seu pet em poucos minutos e tenha acesso a uma plataforma completa para acompanhar sua saúde, histórico e informações importantes sempre que precisar.</p>
+                <div className='flex flex-wrap gap-5 md:gap-10 items-center justify-center mt-8 md:mt-2'>
+                  <Link to='/contratar' className='bg-roxo text-white font-bold py-2 px-4 rounded-4xl hover:bg-roxo-escuro'>Contratar agora</Link>
+                  <button>Falar com a gente</button>
+                </div>
+        </section>
+
+        <section className='h-5'></section>
        
     </section>
   );

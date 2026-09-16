@@ -67,7 +67,7 @@ export const Planos = () => {
     <section className='md:mt-30 mt-10'>
 
         <div className='text-center'>  
-            <span className='uppercase text-roxo font-nunito'>Planos</span>
+            <span className='uppercase text-roxo font-nunito font-bold'>Planos</span>
             <h3 className='text-4xl font-fredoka font-bold'>Um plano para cada fase da vida</h3>
             <p className='text-sm font-nunito text-black/50 mt-2'>Escolha a cobertura ideal para cada pet e reúna todos em uma única fatura.</p>
        </div>
