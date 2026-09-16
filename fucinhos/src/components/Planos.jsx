@@ -80,7 +80,7 @@ export const Planos = () => {
         {plano ? (
             <article className='grid md:grid-cols-3 gap-7 items-center justify-center font-nunito '>
                 {mensal.map((mes)=>(
-                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-100 p-6 rounded-2xl teste `} key={mes.id}>
+                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-105 p-6 rounded-2xl teste `} key={mes.id}>
                         <div className='flex gap-2 items-center'>
                             <img src={mes.img} alt=""className='w-20  h-20 object-cover rounded-[50%]' />
                                 <div>                           
@@ -92,9 +92,9 @@ export const Planos = () => {
                         <p className='text-black/50'>R$ <span className='text-4xl font-fredoka font-semibold text-roxo-escuro'>{mes.preco}</span>/mês por pet</p>
                         <span className='text-sm mt-2 block'>Cobrado todo mês, cancele quando quiser.</span>
 
-                        <ul className='mt-4 '>
+                        <ul className='mt-4'>
                             {mes.beneficios.map((items)=>(
-                                <li className='flex gap-2 items-center mb-2'>
+                                <li className='flex gap-2 items-center mb-2 '>
                                     <FaCheckCircle className="shrink-0 text-[#7B5AD9]" />
                                     
                                 <span>{items}</span>
@@ -107,7 +107,7 @@ export const Planos = () => {
         ) : (
             <article className='grid md:grid-cols-3 gap-7 items-center justify-center font-nunito'>
                 {anual.map((mes)=>(
-                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-110 p-6 rounded-2xl teste`} key={mes.id}>
+                    <div className={`${mes.id === 'completo' ? 'bg-roxo/20 text-roxo-escuro' : 'bg-white'} h-120 p-6 rounded-2xl teste`} key={mes.id}>
                         <div className='flex gap-3 items-center text-roxo-escuro'>
                             <img src={mes.img} alt="" className='w-20  h-20 object-cover rounded-[50%]'/>
                                 <div>                           

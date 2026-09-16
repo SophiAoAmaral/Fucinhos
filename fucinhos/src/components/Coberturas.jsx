@@ -56,8 +56,8 @@ export const Coberturas = () => {
     <section className='my-20 font-nunito'>
         <span className='uppercase text-roxo text-sm text-center block'>O que está coberto</span>
         <h2 className='text-center font-fredoka text-3xl font-semibold'>Da consulta de rotina ao susto de madrugada</h2>
-        <span className='text-center block mt-5 font-semibold text-roxo-escuro'>Deslize para ver mais</span>
-        <div className='flex gap-7 md:flex-wrap mt-2 snap-x snap-mandatory overflow-x-auto '>
+        <span className=' md:hidden text-center block mt-5 font-semibold text-roxo-escuro'>Deslize para ver mais</span>
+        <div className='flex gap-7 md:flex-wrap mt-8 snap-x snap-mandatory overflow-x-auto md:justify-center md:items-center '>
             {coberturas.map((item)=>(
                 <div className='bg-cartoesbg h-50 w-70 p-5 rounded-4xl font-nunito'>
                     <div className={`${item.cor} w-8 h-8 flex items-center justify-center rounded-[50%]`}><span className='text-roxo '>{item.icone}</span></div> 
