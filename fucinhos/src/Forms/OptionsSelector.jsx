@@ -1,0 +1,23 @@
+import React from 'react'
+
+export const OptionsSelector = ({label, options, value, onChange}) => {
+  return (
+    <div className='flex flex-col gap-2 '>
+      <label className='font-fredoka'>{label}</label>
+      <div className="flex gap-5">
+        {options?.map((option) => (
+          <button
+            type="button"
+            key={option.value}
+            onClick={() => onChange(option.value)}
+            className={` ${value === option.value ? "bg-roxo/35 border border-roxo text-roxo-escuro/90" : "bg-white text-black border border-gray-300"} flex items-center font-nunito px-4 py-2 rounded-4xl gap-6`}
+          >
+            {option.icon && option.icon}
+            {option.value}
+            {option.description && <span>{option.description}</span>}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}

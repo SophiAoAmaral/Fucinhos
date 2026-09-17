@@ -2,8 +2,8 @@ import {Route, Routes} from 'react-router'
 import './App.css'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
-import { Plano } from './pages/Plano'
 import { Home } from './pages/Home'
+import { Cadastro } from './Forms/Cadastro'
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
     <Header className='font'/>
       <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/contratar' element={<Plano/>}/>
+          <Route path='/contratar' element={<Cadastro/>}/>
       </Routes>
       <Footer/>
     </>
