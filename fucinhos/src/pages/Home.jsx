@@ -143,6 +143,7 @@ export const Home = () => {
               </div>
           </div>
         </article>
+<<<<<<< Updated upstream
 
       <div className='  bg-amarelo-pastel mb-10 md:p-15 font-nunito mt-5 md:mt-20'>
             <div className='container pt-9 pb-10 md:pt-0 md:pb-0' >
@@ -175,6 +176,15 @@ export const Home = () => {
         </section>
 
         <section className='h-5 hidden md:block'></section>
+=======
+      </section>
+
+      <div className='h-100  bg-amarelo-pastel mb-10'>
+
+      </div>
+
+             <Faq/>
+>>>>>>> Stashed changes
        
     </section>
   );
