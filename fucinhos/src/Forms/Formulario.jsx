@@ -11,7 +11,7 @@ export const Formulario = ({
        
        <Input type='text' placeholder='Adicione o nome do seu pet' name='nome' label='Nome pet' onChange={(e)=> atualizarPet("nome",e.target.value) }/>
        <Input type='text' placeholder='3 anos' name='idade' label='Idade' onChange={(e)=> atualizarPet("idade",e.target.value)}/>
-       <div className='grid grid-cols-2 gap-2'>
+       <div className='grid md:grid-cols-2 gap-2'>
        <OptionsSelector label='Selecione a especie' value={pet.especie} options={
         [{value:'Cachorro', icon:<PiDogFill size='22'/>, label:'Cachorro'},
          {value:'Gato', icon:<PiCatFill size='22'/>, label:'Gato'}, 
@@ -41,7 +41,7 @@ export const Formulario = ({
         ]}
         onChange={(valor) => atualizarPet(index, "plano", valor)}
         />
-       <div className='grid grid-cols-2 gap-3'> 
+       <div className='md:grid grid-cols-2 gap-3'> 
            <Input type='text' placeholder='YorkShire' name='raca' label='Raça' onChange={(e)=> atualizarPet("raca",e.target.value)}/>
            <Input type='text' placeholder='5kg' name='peso' label='Peso' onChange={(e)=> atualizarPet("peso",e.target.value)}/>
            

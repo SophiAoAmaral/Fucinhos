@@ -80,12 +80,12 @@ function removerPet(index) {
           <h1 className="font-fredoka text-4xl text-roxo-escuro">
             Falta pouco para proteger quem faz parte da sua família
           </h1>
-          <p className="w-200 text-roxo-escuro/80">
+          <p className="md:w-200 text-roxo-escuro/80">
             Preencha as informações do seu primeiro pet. Depois, você poderá
             adicionar quantos outros desejar diretamente pelo aplicativo.
           </p>
         </div>
-        <section className="grid grid-cols-[auto_1fr] gap-10 items-start">
+        <section className="md:grid md:grid-cols-[auto_1fr] gap-10 md:items-start">
           <div className="bg-white p-7 rounded-4xl">
             <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>1</span>Sobre o pet</span>
             {pets.map((pet, index) => (
@@ -104,7 +104,7 @@ function removerPet(index) {
               <Sobre dono={dono} />
             </article>
           </div>
-          <div className="bg-roxo/40 h-20"></div>
+          <div className="bg-roxo/40 md:h-20"></div>
         </section>
       </section>
     </section>
