@@ -4,14 +4,19 @@ import { Formulario } from './Formulario'
 import patinha from '../../public/assets/favicon.png'
 import { Sobre } from './Sobre'
 export const Cadastro = () => {
+    const[mensagemSalvar, setMensagemSalvar] = useState('');
+    const[mensagem, setMensagem] = useState('');
+
     const [dono, setDono] = useState({
         nome: '',
         sobrenome: '',
         email: '',
-        endereco:'',
-        numero: ''
-    });
+        cep:'',
+        celular:''
+      });
 
+
+  
     const petInicial = {
     nome: "",
     especie: "",
@@ -43,6 +48,13 @@ const [pets, setPets] = useState([petInicial]);
     },
   ]);
 }
+
+function salvarDadosDono(e){
+  e.preventDefault();
+  setDono(e.target.value);
+  console.log(dono)
+};
+
 function atualizarPet(index, campo, valor) {
   const novosPets = [...pets];
   novosPets[index] = {
@@ -52,7 +64,8 @@ function atualizarPet(index, campo, valor) {
   setPets(novosPets);
 }
 
-function salvarPet(index) {
+function salvarPet(e, index) {
+  e.preventDefault()
   const novosPets = [...pets];
   novosPets[index] = {
     ...novosPets[index],
@@ -60,18 +73,30 @@ function salvarPet(index) {
   };
 
   setPets(novosPets);
+
+  setMensagemSalvar('Dados Salvos!')
+  setTimeout(()=>{
+    setMensagemSalvar('')
+  },3000);
+
+  console.log(pets)
 }
 
 function removerPet(index) {
   setPets((prev) =>
     prev.filter((_, i) => i !== index)
   );
+  setMensagem('Pet Removido!')
+  setTimeout(()=>{
+    setMensagem('')
+  },3000);
+
 };
 
 
   return (
     <section className="background ">
-      <section className="container">
+      <section className="container ">
      <Link to='/' className='pt-20 block font-fredoka text-roxo hover:underline'>← Voltar</Link>
         <div className=" text-center mb-5 flex flex-col items-center justify-center gap-2">
           <span className="inline-block rounded-[50%] bg-roxo/40">
@@ -85,8 +110,8 @@ function removerPet(index) {
             adicionar quantos outros desejar diretamente pelo aplicativo.
           </p>
         </div>
-        <section className="md:grid md:grid-cols-[auto_1fr] gap-10 md:items-start">
-          <div className="bg-white p-7 rounded-4xl">
+        <section className="md:grid md:grid-cols-[auto_1fr]  auto-rows-auto  gap-10 md:items-start">
+          <div className="bg-white p-7 rounded-4xl mb-10">
             <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>1</span>Sobre o pet</span>
             {pets.map((pet, index) => (
               <Formulario
@@ -96,15 +121,19 @@ function removerPet(index) {
                 atualizarPet={atualizarPet}
                 removerPet={removerPet}
                 salvarPet={salvarPet}
+                mensagemSalvar={mensagemSalvar}
               />
             ))}
-            <button onClick={adicionarPet}>Adicionar outro pet</button>
+             <span className="text-green-500">{mensagem}</span>
+            <button onClick={adicionarPet} className='m-auto block cursor-pointer py-3 px-4 bg-roxo/75 hover:bg-roxo-escuro hover:text-white transition rounded-2xl'>Adicionar outro pet</button>
 
-            <article>
-              <Sobre dono={dono} />
-            </article>
+            
           </div>
-          <div className="bg-roxo/40 md:h-20"></div>
+          <article className=' bg-white p-5 rounded-2xl flex flex-col'>
+              <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>2</span>Sobre você</span>
+              <Sobre dono={dono} salvarDadosDono={salvarDadosDono}/>
+               <Link to='/finalizar' className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</Link>
+            </article>
         </section>
       </section>
     </section>

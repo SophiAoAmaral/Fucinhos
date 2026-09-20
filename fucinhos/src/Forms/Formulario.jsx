@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from './Input'
 import { OptionsSelector } from './OptionsSelector'
 import { PiDogFill, PiCatFill, PiGenderMaleFill, PiGenderFemaleFill, } from "react-icons/pi";
 
-export const Formulario = ({
-    pet, index, atualizarPet, removerPet, salvarPet
-}) => {
+export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, mensagemSalvar}) => 
+    {
+        
   return (
-    <section className='flex flex-col gap-3 border border-gray-300 rounded-2xl mb-10 p-5'>
-       
-       <Input type='text' placeholder='Adicione o nome do seu pet' name='nome' label='Nome pet' onChange={(e)=> atualizarPet("nome",e.target.value) }/>
-       <Input type='text' placeholder='3 anos' name='idade' label='Idade' onChange={(e)=> atualizarPet("idade",e.target.value)}/>
+    <form onSubmit={salvarPet} className='flex flex-col gap-3 border border-gray-300 rounded-2xl mb-10 p-5'>
+       <span className='block self-end text-green-500!'>{mensagemSalvar}</span>
+       <Input type='text' required placeholder='Adicione o nome do seu pet' name='nome' label='Nome pet' value={pet.nome} onChange={(e)=> atualizarPet(index ,"nome", e.target.value) }/>
+       <Input type='text' required placeholder='3 anos' name='idade' label='Idade' value={pet.idade} onChange={(e)=> atualizarPet(index, "idade", e.target.value)}/>
        <div className='grid md:grid-cols-2 gap-2'>
        <OptionsSelector label='Selecione a especie' value={pet.especie} options={
         [{value:'Cachorro', icon:<PiDogFill size='22'/>, label:'Cachorro'},
@@ -35,29 +35,28 @@ export const Formulario = ({
         </div>
 
         <OptionsSelector label='Plano' value={pet.plano} options={
-        [{value:'Petisco', icon:'', label:'Petisco', description:"R$ 89,90/mês"},
+        [{value:'Petisco', icon:'', label:'Petisco', description:"R$ 49,00/mês"},
          {value:'Patinha', icon:'' , label:'Patinha', description:"R$ 89,90/mês"}, 
-         {value:'Xodó', icon:'' , label:'Xodo',description:"R$ 89,90/mês"}, 
+         {value:'Xodó', icon:'' , label:'Xodo',description:"R$ 149,00/mês"}, 
         ]}
         onChange={(valor) => atualizarPet(index, "plano", valor)}
         />
        <div className='md:grid grid-cols-2 gap-3'> 
-           <Input type='text' placeholder='YorkShire' name='raca' label='Raça' onChange={(e)=> atualizarPet("raca",e.target.value)}/>
-           <Input type='text' placeholder='5kg' name='peso' label='Peso' onChange={(e)=> atualizarPet("peso",e.target.value)}/>
+           <Input type='text' required placeholder='YorkShire' name='raca' label='Raça' onChange={(e)=> atualizarPet(index, "raca", e.target.value)}/>
+           <Input type='text' required placeholder='5kg' name='peso' label='Peso' onChange={(e)=> atualizarPet(index, "peso", e.target.value)}/>
            
        </div>
         
-    <div className='flex gap-5'>
-        <button type="button" onClick={() => salvarPet(index)}>Salvar</button>
+    <div className='flex gap-5 justify-center items-center mt-5'>
+        <button type="submit"  className='cursor-pointer text-green-500 hover:text-green-700'>Salvar</button>
         <button
             type="button"
             onClick={() => removerPet(index)}
-            className='bg-red-500 text-white py-2 px-4 self-center rounded-2xl hover:bg-red-600 cursor-pointer'
+            className=' py-3 px-4 self-center rounded-2xl text-red-500 hover:text-red-700 cursor-pointer'
             >
             Remover pet
         </button>
     </div>
-
-    </section>
+    </form>
   )
 }
