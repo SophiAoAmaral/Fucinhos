@@ -5,6 +5,7 @@ import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
 import { Cadastro } from './Forms/Cadastro'
 import { useEffect } from 'react'
+import { Finalizar } from './pages/Finalizar'
 
 function App() {
   function ScrollToTop() {
@@ -25,6 +26,8 @@ function App() {
       <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/contratar' element={<Cadastro/>}/>
+          <Route path='/finalizar' element={<Finalizar/>}/>
+
       </Routes>
       <Footer/>
     </>

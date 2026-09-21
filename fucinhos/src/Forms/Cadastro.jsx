@@ -49,12 +49,14 @@ const [pets, setPets] = useState([petInicial]);
   ]);
 }
 
-function salvarDadosDono(e){
-  e.preventDefault();
-  setDono(e.target.value);
-  console.log(dono)
-};
+function salvarDadosDono(e) {
+  const { name, value } = e.target;
+  setDono((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
 
+}
 function atualizarPet(index, campo, valor) {
   const novosPets = [...pets];
   novosPets[index] = {
@@ -132,7 +134,7 @@ function removerPet(index) {
           <article className=' bg-white p-5 rounded-2xl flex flex-col'>
               <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>2</span>Sobre você</span>
               <Sobre dono={dono} salvarDadosDono={salvarDadosDono}/>
-               <Link to='/finalizar' className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</Link>
+               <Link to='/finalizar' state={{pets, dono}} className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</Link>
             </article>
         </section>
       </section>
