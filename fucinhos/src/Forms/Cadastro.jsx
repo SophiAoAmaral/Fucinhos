@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { Formulario } from './Formulario'
 import patinha from '../../public/assets/favicon.png'
 import { Sobre } from './Sobre'
 export const Cadastro = () => {
     const[mensagemSalvar, setMensagemSalvar] = useState('');
     const[mensagem, setMensagem] = useState('');
+    const [erros, setErros] = useState({});
+    const mensagemErro = 'Preencha o campo'
+
+    const navigate = useNavigate();
 
     const [dono, setDono] = useState({
         nome: '',
@@ -96,6 +100,57 @@ function removerPet(index) {
 };
 
 
+
+function finalizarPedido(e) {
+    e.preventDefault();
+
+   const novosErros = {};
+
+pets.forEach((pet, index) => {
+
+    if (!pet.nome) {
+        novosErros[`nome-${index}`] = {mensagemErro};
+    }
+
+    if (!pet.idade) {
+        novosErros[`idade-${index}`] = {mensagemErro};
+    }
+
+    if (!pet.especie) {
+        novosErros[`especie-${index}`] = {mensagemErro};
+    }
+
+    if (!pet.raca) {
+        novosErros[`raca-${index}`] = {mensagemErro}
+    }
+
+    if (!pet.sexo) {
+        novosErros[`sexo-${index}`] = {mensagemErro}
+    }
+    if (!pet.plano) {
+        novosErros[`plano-${index}`] = {mensagemErro}
+    }
+    if (!pet.peso) {
+        novosErros[`peso-${index}`] = {mensagemErro}
+    }
+
+});
+
+setErros(novosErros);
+
+    if (Object.keys(novosErros).length > 0) {
+        return;
+    }
+  
+
+    navigate("/finalizar", {
+        state: {
+            dono,
+            pets,
+        },
+    });
+}
+
   return (
     <section className="background ">
       <section className="container ">
@@ -112,31 +167,32 @@ function removerPet(index) {
             adicionar quantos outros desejar diretamente pelo aplicativo.
           </p>
         </div>
-        <section className="md:grid md:grid-cols-[auto_1fr]  auto-rows-auto  gap-10 md:items-start">
+        <form onSubmit={finalizarPedido} className="md:grid md:grid-cols-[auto_1fr]  auto-rows-auto  gap-10 md:items-start">
           <div className="bg-white p-7 rounded-4xl mb-10">
             <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>1</span>Sobre o pet</span>
             {pets.map((pet, index) => (
               <Formulario
-                key={pet.index}
+                key={index}
                 pet={pet}
                 index={index}
                 atualizarPet={atualizarPet}
                 removerPet={removerPet}
                 salvarPet={salvarPet}
                 mensagemSalvar={mensagemSalvar}
+                erros={erros}
               />
             ))}
              <span className="text-green-500">{mensagem}</span>
-            <button onClick={adicionarPet} className='m-auto block cursor-pointer py-3 px-4 bg-roxo/75 hover:bg-roxo-escuro hover:text-white transition rounded-2xl'>Adicionar outro pet</button>
+            <button onClick={adicionarPet} type='button' className='m-auto block cursor-pointer py-3 px-4 bg-roxo/75 hover:bg-roxo-escuro hover:text-white transition rounded-2xl'>Adicionar outro pet</button>
 
             
           </div>
           <article className=' bg-white p-5 rounded-2xl flex flex-col'>
               <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>2</span>Sobre você</span>
               <Sobre dono={dono} salvarDadosDono={salvarDadosDono}/>
-               <Link to='/finalizar' state={{pets, dono}} className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</Link>
+               <button type='submit' className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</button>
             </article>
-        </section>
+        </form>
       </section>
     </section>
   );

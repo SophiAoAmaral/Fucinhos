@@ -4,37 +4,37 @@ import { OptionsSelector } from './OptionsSelector'
 import { PiDogFill, PiCatFill, PiGenderMaleFill, PiGenderFemaleFill, } from "react-icons/pi";
 import { UploadImage } from './UploadImage';
 
-export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, mensagemSalvar}) => 
+export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, mensagemSalvar, erros}) => 
     {
         
   return (
-    <form
-      onSubmit={salvarPet}
+    <div
       className="flex flex-col gap-3 border border-gray-300 rounded-2xl mb-10 p-5"
     >
       <span className="block self-end text-green-500!">{mensagemSalvar}</span>
       <Input
         type="text"
-        required
         placeholder="Adicione o nome do seu pet"
         name="nome"
         label="Nome pet"
         value={pet.nome}
+        erro={erros[`nome-${index}`]}
         onChange={(e) => atualizarPet(index, "nome", e.target.value)}
       />
       <Input
         type="text"
-        required
         placeholder="3 anos"
         name="idade"
         label="Idade"
         value={pet.idade}
+        erro={erros[`idade-${index}`]}
         onChange={(e) => atualizarPet(index, "idade", e.target.value)}
       />
       <div className="grid md:grid-cols-2 gap-2">
         <OptionsSelector
           label="Selecione a especie"
           value={pet.especie}
+          erro={erros[`especie-${index}`]}
           options={[
             {
               value: "Cachorro",
@@ -49,6 +49,7 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
         <OptionsSelector
           label="Sexo"
           value={pet.sexo}
+          erro={erros[`sexo-${index}`]}
           options={[
             {
               value: "Femea",
@@ -66,6 +67,7 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
         <OptionsSelector
           label="Porte"
           value={pet.porte}
+          erro={erros[`porte-${index}`]}
           options={[
             { value: "Pequeno", icon: "", label: "Pequeno" },
             { value: "Medio", icon: "", label: "Medio" },
@@ -78,6 +80,7 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
       <OptionsSelector
         label="Plano"
         value={pet.plano}
+        erro={erros[`plano-${index}`]}
         options={[
           {
             value: "Petisco",
@@ -103,7 +106,7 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
       <div className="md:grid grid-cols-2 gap-3">
         <Input
           type="text"
-          required
+         erro={erros[`raca-${index}`]}
           placeholder="YorkShire"
           name="raca"
           label="Raça"
@@ -111,11 +114,12 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
         />
         <Input
           type="text"
-          required
+          erro={erros[`peso-${index}`]}
           placeholder="5kg"
           name="peso"
           label="Peso"
           onChange={(e) => atualizarPet(index, "peso", e.target.value)}
+          
         />
       </div>
 
@@ -131,7 +135,7 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
       )}
       <div className="flex gap-5 justify-center items-center mt-5">
         <button
-          type="submit"
+          type="button"
           className="cursor-pointer text-green-500 hover:text-green-700"
         >
           Salvar
@@ -144,6 +148,6 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, men
           Remover pet
         </button>
       </div>
-    </form>
+    </div>
   );
 }
