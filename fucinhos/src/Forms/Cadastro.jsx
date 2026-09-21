@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router'
 import { Formulario } from './Formulario'
 import patinha from '../../public/assets/favicon.png'
 import { Sobre } from './Sobre'
+import { ResumoPedido } from '../components/ResumoPedido'
 export const Cadastro = () => {
     const[mensagemSalvar, setMensagemSalvar] = useState('');
     const[mensagem, setMensagem] = useState('');
@@ -37,72 +38,9 @@ export const Cadastro = () => {
 
 const [pets, setPets] = useState([petInicial]);
 
-   function adicionarPet() {
-  setPets((prev) => [
-    ...prev,
-    {
-      nome: "",
-      especie: "",
-      raca: "",
-      idade: "",
-      sexo: "",
-      porte: "",
-      peso: "",
-      plano: "",
-      foto: null,
-    },
-  ]);
-}
-
-function salvarDadosDono(e) {
-  const { name, value } = e.target;
-  setDono((prev) => ({
-    ...prev,
-    [name]: value,
-  }));
-
-}
-function atualizarPet(index, campo, valor) {
-  const novosPets = [...pets];
-  novosPets[index] = {
-    ...novosPets[index],
-    [campo]: valor,
-  };
-  setPets(novosPets);
-}
-
-function salvarPet(e, index) {
-  e.preventDefault()
-  const novosPets = [...pets];
-  novosPets[index] = {
-    ...novosPets[index],
-    salvo: true,
-  };
-
-  setPets(novosPets);
-
-  setMensagemSalvar('Dados Salvos!')
-  setTimeout(()=>{
-    setMensagemSalvar('')
-  },3000);
-
-  console.log(pets)
-}
-
-function removerPet(index) {
-  setPets((prev) =>
-    prev.filter((_, i) => i !== index)
-  );
-  setMensagem('Pet Removido!')
-  setTimeout(()=>{
-    setMensagem('')
-  },3000);
-
-};
-
-
 
 function finalizarPedido(e) {
+
     e.preventDefault();
 
    const novosErros = {};
@@ -135,9 +73,14 @@ pets.forEach((pet, index) => {
         novosErros[`peso-${index}`] = {mensagemErro}
     }
 
+    if (!pet.porte) {
+        novosErros[`porte-${index}`] = {mensagemErro}
+    }
+
 });
 
 setErrosPet(novosErros);
+
 
 
 const novosErrosDono = {};
@@ -165,13 +108,95 @@ setErrosDono(novosErrosDono);
     }
   
 
-    navigate("/finalizar", {
-        state: {
-            dono,
-            pets,
-        },
-    });
+
+   
 }
+
+   function adicionarPet() {
+  setPets((prev) => [
+    ...prev,
+    {
+      nome: "",
+      especie: "",
+      raca: "",
+      idade: "",
+      sexo: "",
+      porte: "",
+      peso: "",
+      plano: "",
+      foto: null,
+    },
+  ]);
+}
+
+
+function salvarDadosDono(e) {
+  const { name, value } = e.target;
+  setDono((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+
+    if (value.trim() !== "") {
+    setErrosDono((prev) => {
+      const copia = { ...prev };
+
+      delete copia[name];
+
+      return copia;
+    });
+  }
+
+}
+function atualizarPet(index, campo, valor) {
+  const novosPets = [...pets];
+  novosPets[index] = {
+    ...novosPets[index],
+    [campo]: valor,
+  };
+  setPets(novosPets);
+
+  if (valor.trim() !== "") {
+    setErrosPet((prev) => {
+      const copia = { ...prev };
+
+      delete copia[`${campo}-${index}`];
+
+      return copia;
+    });
+  }
+
+}
+
+function salvarPet(e, index) {
+  e.preventDefault()
+  const novosPets = [...pets];
+  novosPets[index] = {
+    ...novosPets[index],
+    salvo: true,
+  };
+
+  setPets(novosPets);
+
+  setMensagemSalvar('Dados Salvos!')
+  setTimeout(()=>{
+    setMensagemSalvar('')
+  },3000);
+
+  console.log(pets)
+}
+
+function removerPet(index) {
+  setPets((prev) =>
+    prev.filter((_, i) => i !== index)
+  );
+  setMensagem('Pet Removido!')
+  setTimeout(()=>{
+    setMensagem('')
+  },3000);
+
+};
+
 
   return (
     <section className="background ">
@@ -190,6 +215,7 @@ setErrosDono(novosErrosDono);
           </p>
         </div>
         <form onSubmit={finalizarPedido} className="md:grid md:grid-cols-[auto_1fr]  auto-rows-auto  gap-10 md:items-start">
+          <div>
           <div className="bg-white p-7 rounded-4xl mb-10">
             <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>1</span>Sobre o pet</span>
             {pets.map((pet, index) => (
@@ -206,14 +232,19 @@ setErrosDono(novosErrosDono);
             ))}
              <span className="text-green-500">{mensagem}</span>
             <button onClick={adicionarPet} type='button' className='m-auto block cursor-pointer py-3 px-4 bg-roxo/75 hover:bg-roxo-escuro hover:text-white transition rounded-2xl'>Adicionar outro pet</button>
-
-            
           </div>
-          <article className=' bg-white p-5 rounded-2xl flex flex-col'>
+          <article className=' bg-white p-5 rounded-2xl flex flex-col  mb-10'>
               <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>2</span>Sobre você</span>
               <Sobre dono={dono} salvarDadosDono={salvarDadosDono} erros={errosDono}/>
-               <button type='submit' className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</button>
+              
             </article>
+            </div>
+
+            <div className=' top-6 self-start'>
+              <ResumoPedido pets={pets} dono={dono}/>
+            </div>
+
+           
         </form>
       </section>
     </section>

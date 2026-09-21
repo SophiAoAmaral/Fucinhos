@@ -5,6 +5,9 @@ export const Finalizar = () => {
     const {state} = useLocation();
     console.log(state)
   return (
-    <div>Finalizar</div>
+    <section className='container'>
+
+        
+    </section>
   )
 }
