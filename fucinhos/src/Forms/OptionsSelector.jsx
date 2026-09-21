@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const OptionsSelector = ({label, options, value, onChange}) => {
+export const OptionsSelector = ({label, options, value, onChange, erro}) => {
   return (
     <div className='flex flex-col gap-2 text-sm md:text-base'>
       <label className='font-fredoka'>{label}</label>

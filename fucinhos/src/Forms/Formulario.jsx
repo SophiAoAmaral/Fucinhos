@@ -4,7 +4,7 @@ import { OptionsSelector } from './OptionsSelector'
 import { PiDogFill, PiCatFill, PiGenderMaleFill, PiGenderFemaleFill, } from "react-icons/pi";
 import { UploadImage } from './UploadImage';
 
-export const Formulario = ({pet, index, atualizarPet, removerPet, salvarPet, mensagemSalvar, erros}) => 
+export const Formulario = ({pet, index, atualizarPet, removerPet, mensagemSalvar, erros}) => 
     {
         
   return (

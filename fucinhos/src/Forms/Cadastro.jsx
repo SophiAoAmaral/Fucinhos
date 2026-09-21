@@ -6,7 +6,8 @@ import { Sobre } from './Sobre'
 export const Cadastro = () => {
     const[mensagemSalvar, setMensagemSalvar] = useState('');
     const[mensagem, setMensagem] = useState('');
-    const [erros, setErros] = useState({});
+    const [errosDono, setErrosDono] = useState({});
+    const [errosPet, setErrosPet] = useState({});
     const mensagemErro = 'Preencha o campo'
 
     const navigate = useNavigate();
@@ -136,7 +137,28 @@ pets.forEach((pet, index) => {
 
 });
 
-setErros(novosErros);
+setErrosPet(novosErros);
+
+
+const novosErrosDono = {};
+
+if (!dono.nome) {
+    novosErrosDono.nome ={mensagemErro} ;
+}
+
+if (!dono.email) {
+    novosErrosDono.email = {mensagemErro};
+}
+
+if (!dono.cep) {
+    novosErrosDono.cep = {mensagemErro};
+}
+
+if (!dono.celular) {
+    novosErrosDono.celular = {mensagemErro};
+}
+
+setErrosDono(novosErrosDono);
 
     if (Object.keys(novosErros).length > 0) {
         return;
@@ -179,7 +201,7 @@ setErros(novosErros);
                 removerPet={removerPet}
                 salvarPet={salvarPet}
                 mensagemSalvar={mensagemSalvar}
-                erros={erros}
+                erros={errosPet}
               />
             ))}
              <span className="text-green-500">{mensagem}</span>
@@ -189,7 +211,7 @@ setErros(novosErros);
           </div>
           <article className=' bg-white p-5 rounded-2xl flex flex-col'>
               <span className='flex  font-semibold gap-2 text-xl mb-2 font-fredoka items-center'><span className='py-2 px-4 rounded-[100%] text-white font-bold bg-roxo'>2</span>Sobre você</span>
-              <Sobre dono={dono} salvarDadosDono={salvarDadosDono}/>
+              <Sobre dono={dono} salvarDadosDono={salvarDadosDono} erros={errosDono}/>
                <button type='submit' className='self-center inline-block py-3 px-6 bg-roxo/75 rounded-2xl cursor-pointer hover:bg-roxo-escuro hover:text-white transition'>Ir para o pagamento</button>
             </article>
         </form>
