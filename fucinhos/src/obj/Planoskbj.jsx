@@ -2,19 +2,19 @@ export const planosobj = [
   {
     value: "Petisco",
     label: "Petisco",
-    preco: 49,
-    description: "R$ 49,00/mês",
+    mensal: 49,
+    anual: 470,
   },
   {
     value: "Patinha",
     label: "Patinha",
-    preco: 89.9,
-    description: "R$ 89,90/mês",
+    mensal: 89,
+    anual: 854,
   },
   {
     value: "Xodó",
     label: "Xodó",
-    preco: 149,
-    description: "R$ 149,00/mês",
+    mensal: 149.00,
+    anual: 1430.00,
   },
 ];

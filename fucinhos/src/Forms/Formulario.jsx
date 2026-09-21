@@ -5,7 +5,7 @@ import { PiDogFill, PiCatFill, PiGenderMaleFill, PiGenderFemaleFill, } from "rea
 import { UploadImage } from './UploadImage';
 import {planosobj} from '../obj/Planoskbj';
 
-export const Formulario = ({pet, index, atualizarPet, removerPet, mensagemSalvar, erros}) => 
+export const Formulario = ({pet, tipoPlano, index, atualizarPet, removerPet, mensagemSalvar, erros}) => 
     {
         
   return (
@@ -83,6 +83,7 @@ export const Formulario = ({pet, index, atualizarPet, removerPet, mensagemSalvar
   value={pet.plano}
   erro={erros[`plano-${index}`]}
   options={planosobj}
+  tipoPlano={tipoPlano}
   onChange={(valor) => atualizarPet(index, "plano", valor)}
 />
       <div className="md:grid grid-cols-2 gap-3">

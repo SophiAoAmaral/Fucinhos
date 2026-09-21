@@ -9,9 +9,9 @@ export const Cadastro = () => {
     const[mensagem, setMensagem] = useState('');
     const [errosDono, setErrosDono] = useState({});
     const [errosPet, setErrosPet] = useState({});
-    const mensagemErro = 'Preencha o campo'
+    const mensagemErro = 'Preencha o campo';
+    const [tipoPlano, setTipoPlano] = useState("mensal");
 
-    const navigate = useNavigate();
 
     const [dono, setDono] = useState({
         nome: '',
@@ -228,6 +228,7 @@ function removerPet(index) {
                 salvarPet={salvarPet}
                 mensagemSalvar={mensagemSalvar}
                 erros={errosPet}
+                tipoPlano={tipoPlano}
               />
             ))}
              <span className="text-green-500">{mensagem}</span>
@@ -241,7 +242,9 @@ function removerPet(index) {
             </div>
 
             <div className=' top-6 self-start'>
-              <ResumoPedido pets={pets} dono={dono}/>
+              <ResumoPedido pets={pets} dono={dono} tipoPlano={tipoPlano} setTipoPlano={setTipoPlano}/>
+
+              <button className='m-auto block mt-4 px-6 py-3 bg-roxo text-white rounded-2xl hover:bg-roxo-escuro cursor-pointer transition'>Finalizar pedido</button>
             </div>
 
            
