@@ -15,23 +15,33 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
     );
 }, 0);
 
+  const parcelas = Array.from({ length: 12 }, (_, i) => ({
+  vezes: i + 1,
+  valor: total / (i + 1),
+}));
+
+
 
 
   return (
     <div className="bg-white rounded-3xl p-6 top-6 font-nunito">
-
-    <span className="uppercase text-xs font-bold tracking-widest text-roxo">
+      <span className="uppercase text-xs font-bold tracking-widest text-roxo">
         Resumo do pedido
-    </span>
+      </span>
+      <div className="flex gap-2 mb-5 items-center justify-center bg-roxo/50 p-1 rounded-2xl"> 
+        <button type="button" onClick={() => setTipoPlano("mensal")} className={`py-2 px-4 ${tipoPlano === 'mensal' ? 'bg-white text-roxo-escuro' : 'ttext-roxo-escuro'} rounded-2xl`}>
+           Mensal 
+        </button> 
+        <button type="button" onClick={() => setTipoPlano("anual")}   className={`py-2 px-4 ${tipoPlano === 'anual' ? 'bg-white text-roxo-escuro' : 'text-roxo-escuro '} rounded-2xl`}>
+           Anual 
+        </button> 
+      </div>
+    
+      {pets.map((pet, index) => {
+        
+        
 
-    {pets.map((pet, index) => {
-
-        console.log("pet.plano:", pet.plano);
-            console.log(planosobj);
-
-        const plano = planosobj.find(
-            p => p.value === pet.plano
-        );
+        const plano = planosobj.find((p) => p.value === pet.plano);
 
         return (
           <div key={index} className="mt-6 border-b border-gray-200 pb-5">
@@ -45,54 +55,43 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
 
               <div>
                 <h2 className="font-fredoka text-2xl">{pet.nome}</h2>
-
+              {!pet.especie && !pet.sexo && !pet.idade ?  (
+                <p className="text-gray-500">
+                  Preencha os dados do pet
+                </p>
+              ) : (
                 <p className="text-gray-500">
                   {pet.especie} • {pet.sexo} • {pet.idade}
                 </p>
+              )}
+                
               </div>
             </div>
 
-            <div className="mt-6 border-b border-gray-200 pb-5">
-              <span className="text-xs uppercase text-gray-500">
-                Plano escolhido
-              </span>
-              <div className="flex bg-gray-100 rounded-2xl p-1">
-                <button
-                  onClick={() => setTipoPlano("mensal")}
-                  type="button"
-                  className={`flex-1 py-2 rounded-xl transition ${
-                    tipoPlano === "mensal"
-                      ? "bg-roxo text-white"
-                      : "text-gray-600"
-                  }`}
-                >
-                  Mensal
-                </button>
+            {plano && (
+              <div className="mt-5 bg-roxo/10 rounded-2xl p-3">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-xs uppercase text-roxo font-bold">Plano</p>
 
-                <button
-                  onClick={() => setTipoPlano("anual")}
-                  type="button"
-                  className={`flex-1 py-2 rounded-xl transition ${
-                    tipoPlano === "anual"
-                      ? "bg-roxo text-white"
-                      : "text-gray-600"
-                  }`}
-                >
-                  Anual
-                </button>
-              </div>
-              <div className="flex justify-between font-nunito items-center mt-2 bg-roxo/10 rounded-2xl px-4 py-3 ">
-                <p>
-                  {plano
-                    ? tipoPlano === "mensal"
-                      ? `R$ ${plano.mensal.toFixed(2)}/mês`
-                      : `R$ ${plano.anual.toFixed(2)}/ano`
-                    : "Selecione um plano"}
-                </p>
-              </div>
-            </div>
+                    <h3 className="font-fredoka text-lg">{plano.label}</h3>
+                  </div>
 
-            <div>
+                  <p className='text-xl'>
+                    {plano
+                      ? tipoPlano === "mensal"
+                        ? `R$ ${plano.mensal.toFixed(2)}/mês`
+                        : `R$ ${plano.anual.toFixed(2)}/ano`
+                      : "Selecione um plano"}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      <div>
               <span className="uppercase text-xs font-bold tracking-widest text-roxo block mt-4">
                 Responsável
               </span>
@@ -101,33 +100,37 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
                 <p>{dono.email}</p>
               </div>
             </div>
-          </div>
-        );
-
-    })}
-    <div className="mt-2">
-  <div className="flex justify-between items-center border-b border-gray-200 pb-5">
-    <span className="font-nunito text-xl">
-      Total mensal
-    </span>
-
-    <span className="">
-      R$ {total.toFixed(2)}
-    </span>
-  </div>
-</div>
 
 
+      <div className="mt-2">
+        <div className="flex justify-between items-center border-b border-gray-200 pb-5">
+          <span className="font-nunito text-xl">Total mensal</span>
 
-<div className='mt-6 font-nunito flex flex-col gap-2'>
-  <span className='block uppercase mb-2 text-xs font-bold text-roxo'>Dados de pagamento</span>
-    <Input label='Nome completo' placeholder='Nome escrito no cartão'/>
-    <Input label='Número no cartão' placeholder='0000 0000 0000 0000'/>
-    <div className='grid grid-cols-2 gap-4'>
-      <Input placeholder="MM/AA"  label='Data de validade'/>
-      <Input placeholder="CVV" label='CVV'/> 
+          <span className="">R$ {total.toFixed(2)}</span>
+        </div>
+      </div>
+
+      <div className="mt-6 font-nunito flex flex-col gap-2">
+        <span className="block uppercase mb-2 text-xs font-bold text-roxo">
+          Dados de pagamento
+        </span>
+        <Input label="Nome completo" placeholder="Nome escrito no cartão" />
+        <Input label="Número no cartão" placeholder="0000 0000 0000 0000" />
+        <div className="grid grid-cols-2 gap-4">
+          <Input placeholder="MM/AA" label="Data de validade" />
+          <Input placeholder="CVV" label="CVV" />
+        </div>
+
+        <select className='border px-4 py-3 rounded-2xl border-gray-300 focus:border-roxo-escuro mt-5'>
+
+          {parcelas.map((parcela) => (
+            <option key={parcela.vezes}>
+              {parcela.vezes}x de R$ {parcela.valor.toFixed(2)}
+            </option>
+          ))}
+          
+        </select>
+      </div>
     </div>
-</div> 
-</div>
-  )
+  );
 }

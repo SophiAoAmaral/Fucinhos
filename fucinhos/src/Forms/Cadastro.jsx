@@ -11,7 +11,7 @@ export const Cadastro = () => {
     const [errosPet, setErrosPet] = useState({});
     const mensagemErro = 'Preencha o campo';
     const [tipoPlano, setTipoPlano] = useState("mensal");
-
+   const navigate = useNavigate()
 
     const [dono, setDono] = useState({
         nome: '',
@@ -201,7 +201,7 @@ function removerPet(index) {
   return (
     <section className="background ">
       <section className="container ">
-     <Link to='/' className='pt-20 block font-fredoka text-roxo hover:underline'>← Voltar</Link>
+     <Link to='/' className='pt-10 md:pt-20 block font-fredoka text-roxo hover:underline'>← Voltar</Link>
         <div className=" text-center mb-5 flex flex-col items-center justify-center gap-2">
           <span className="inline-block rounded-[50%] bg-roxo/40">
             <img src={patinha} alt="" className="w-15 h-15" />

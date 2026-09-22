@@ -29,7 +29,7 @@ export const Header = () => {
     
     
         {menuAberto && (
-            <ul className='md:hidden text-center md:text-start absolute top-16 right-0 bg-surface text-ink rounded-xl shadow-lg p-6 flex flex-col gap-4 min-w-48 bg-white'>
+            <ul className='md:hidden text-center md:text-start absolute top-16 right-0 bg-surface text-ink rounded-xl shadow-lg p-6 flex flex-col gap-4 min-w-48 bg-white z-50'>
             <li><a className='' href="#planos">Planos</a></li>
             <li><a href="#coberturas">Coberturas</a></li>
             <li><a href="#matilha">A matilha</a></li>

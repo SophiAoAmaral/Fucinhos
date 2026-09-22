@@ -21,10 +21,10 @@ export const Footer = () => {
             <div className='flex gap-5 md:gap-10 flex-wrap mt-2'>
               {
                 items.map((i)=>(
-                  <ul>
+                  <ul key={i.title}>
                     <h3 className='font-fredoka text-roxo-escuro font-semibold'>{i.title}</h3>
                     {i.topicos.map((topico)=>(
-                      <li className='text-roxo-escuro/80 hover:text-roxo cursor-pointer text-sm'>{topico}</li>
+                      <li key={topico} className='text-roxo-escuro/80 hover:text-roxo cursor-pointer text-sm'>{topico}</li>
                     ))}
                   </ul>
                 ))

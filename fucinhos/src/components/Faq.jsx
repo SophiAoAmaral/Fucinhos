@@ -16,7 +16,7 @@ export const Faq = () => {
     ]
 
   return (
-    <article className=' mt-15 font-nunito pb-10 md:mb-10'>
+    <article className=' mt-15 font-nunito pb-10 md:mb-10' id='duvidas'>
         <div className='text-center'>
             <span className='uppercase text-roxo font-bold'>Dúvidas</span>
             <h2 className='text-4xl font-fredoka mb-6 font-semibold'>Antes de assinar</h2>

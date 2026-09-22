@@ -131,7 +131,7 @@ export const Home = () => {
               <li className='flex gap-2'><span><img src={patinha}  className='w-5' alt="" /></span>Um plano diferente para cada necessidade</li>
               <li className='flex gap-2'><span><img src={patinha}  className='w-5' alt="" /></span>Carteirinha digital individual</li>
             </ul>
-            <span className='block text-center text-sm text-roxo-escuro/60 pb-5 md:pb-0 mb-5'>Mais cuidado, menos complição</span>
+            <span className='inline-block text-center md:text-start text-sm text-roxo-escuro/60 pb-5 md:pb-0 mb-5'>Mais cuidado, menos complição</span>
           </div>
 
           <div className='hidden md:grid md:grid-cols-2 md:p-10 p-5 gap-3 md:pl-6'>
