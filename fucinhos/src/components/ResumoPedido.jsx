@@ -137,15 +137,19 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano, enviado}) =>
           <Input placeholder="CVV" label="CVV" />
         </div>
 
+      {tipoPlano === 'anual' && (
         <select className='border px-4 py-3 rounded-2xl border-gray-300 focus:border-roxo-escuro mt-5'>
-
+      
           {parcelas.map((parcela) => (
             <option key={parcela.vezes}>
               {parcela.vezes}x de R$ {parcela.valor.toFixed(2)}
             </option>
           ))}
+            </select>
+        )}
+          
 
-        </select>
+      
       </div>
 
      
