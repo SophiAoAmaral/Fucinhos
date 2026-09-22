@@ -1,26 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { planosobj } from '../obj/Planoskbj';
 import { Input } from '../Forms/Input';
-export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
+import { Finalizar } from '../pages/Finalizar';
+import { Link } from 'react-router';
+export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano, enviado}) => {
 
-    const total = pets.reduce((soma, pet) => {
-    const plano = planosobj.find(
-        p => p.value === pet.plano
-    );
-         if (!plano) return soma;
-    return soma + (
-        tipoPlano === "mensal"
-            ? plano.mensal
-            : plano.anual
-    );
-}, 0);
+    const total = pets.reduce((soma, pet, index) => {
+      const plano = planosobj.find((p) => p.value === pet.plano);
 
-  const parcelas = Array.from({ length: 12 }, (_, i) => ({
-  vezes: i + 1,
-  valor: total / (i + 1),
-}));
+      if (!plano) return soma;
 
+      const valor = tipoPlano === "mensal" ? plano.mensal : plano.anual;
 
+      const valorFinal = index >= 1 ? valor * 0.85 : valor;
+
+      return soma + valorFinal;
+    }, 0);
+
+    const parcelas = Array.from({ length: 12 }, (_, i) => ({
+      vezes: i + 1,
+      valor: total / (i + 1)
+    }));
+
+    
 
 
   return (
@@ -38,10 +40,13 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
       </div>
     
       {pets.map((pet, index) => {
-        
-        
 
         const plano = planosobj.find((p) => p.value === pet.plano);
+        const valor =
+          tipoPlano === "mensal" ? (plano?.mensal ?? 0) : (plano?.anual ?? 0);
+
+        const valorFinal = index >= 1 ? valor * 0.85 : valor;
+      
 
         return (
           <div key={index} className="mt-6 border-b border-gray-200 pb-5">
@@ -55,16 +60,13 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
 
               <div>
                 <h2 className="font-fredoka text-2xl">{pet.nome}</h2>
-              {!pet.especie && !pet.sexo && !pet.idade ?  (
-                <p className="text-gray-500">
-                  Preencha os dados do pet
-                </p>
-              ) : (
-                <p className="text-gray-500">
-                  {pet.especie} • {pet.sexo} • {pet.idade}
-                </p>
-              )}
-                
+                {!pet.especie && !pet.sexo && !pet.idade ? (
+                  <p className="text-gray-500">Preencha os dados do pet</p>
+                ) : (
+                  <p className="text-gray-500">
+                    {pet.especie} • {pet.sexo} • {pet.idade}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -72,18 +74,32 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
               <div className="mt-5 bg-roxo/10 rounded-2xl p-3">
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-xs uppercase text-roxo font-bold">Plano</p>
+                    <p className="text-xs uppercase text-roxo font-bold">
+                      Plano
+                    </p>
 
                     <h3 className="font-fredoka text-lg">{plano.label}</h3>
                   </div>
 
-                  <p className='text-xl'>
-                    {plano
-                      ? tipoPlano === "mensal"
-                        ? `R$ ${plano.mensal.toFixed(2)}/mês`
-                        : `R$ ${plano.anual.toFixed(2)}/ano`
-                      : "Selecione um plano"}
-                  </p>
+                  <div className="text-right">
+                    {index >= 1 && (
+                      <p className="text-sm text-gray-400 line-through">
+                        R$ {valor.toFixed(2)}
+                        {tipoPlano === "mensal" ? "/mês" : "/ano"}
+                      </p>
+                    )}
+
+                    <p className="text-xl font-semibold">
+                      R$ {valorFinal.toFixed(2)}
+                      {tipoPlano === "mensal" ? "/mês" : "/ano"}
+                    </p>
+
+                    {index >= 1 && (
+                      <p className="text-xs text-green-600 font-semibold">
+                        15% OFF
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -128,9 +144,12 @@ export const ResumoPedido = ({pets, dono , tipoPlano, setTipoPlano}) => {
               {parcela.vezes}x de R$ {parcela.valor.toFixed(2)}
             </option>
           ))}
-          
+
         </select>
       </div>
+
+     
+          
     </div>
   );
 }

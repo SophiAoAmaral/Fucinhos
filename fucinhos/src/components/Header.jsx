@@ -13,9 +13,9 @@ export const Header = () => {
           </div>
           <ul className=' hidden md:flex gap-5 items-center **:hover:text-roxo font-fredoka'>
             <li><a className='' href="#">Planos</a></li>
-            <li><a href="#planos">Coberturas</a></li>
-            <li><a href="#matilha">A matilha</a></li>
-            <li><a href="#duvidas">Dúvidas</a></li>
+            <li><a href="#planos"><Link to='/'>Coberturas</Link></a></li>
+            <li><a href="#matilha"><Link to='/'>A matilha</Link></a></li>
+            <li><a href="#duvidas"><Link to='/'>Dúvidas</Link></a></li>
             <Link className='font-medium border rounded-2xl py-2 px-4 hover:bg-roxo/15' to='/contratar'>Contratar</Link>
           </ul>
 

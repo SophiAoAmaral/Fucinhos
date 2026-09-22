@@ -11,7 +11,7 @@ export const Cadastro = () => {
     const [errosPet, setErrosPet] = useState({});
     const mensagemErro = 'Preencha o campo';
     const [tipoPlano, setTipoPlano] = useState("mensal");
-   const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const [dono, setDono] = useState({
         nome: '',
@@ -106,11 +106,17 @@ setErrosDono(novosErrosDono);
     if (Object.keys(novosErros).length > 0) {
         return;
     }
+
+    console.log("Navegando...");
+console.log({
+  pets,
+  dono,
+});
   
+    navigate('/finalizar', {state: {pets}})
 
-
-   
-}
+    
+};
 
    function adicionarPet() {
   setPets((prev) => [
@@ -244,7 +250,7 @@ function removerPet(index) {
             <div className=' top-6 self-start pb-10 md:pb-0'>
               <ResumoPedido pets={pets} dono={dono} tipoPlano={tipoPlano} setTipoPlano={setTipoPlano}/>
 
-              <button className='m-auto block mt-4  px-6 py-3 bg-roxo text-white rounded-2xl hover:bg-roxo-escuro cursor-pointer transition'>Contratar plano</button>
+              <button  className='m-auto block mt-4  px-6 py-3 bg-roxo text-white rounded-2xl hover:bg-roxo-escuro cursor-pointer transition'>Contratar plano</button>
             </div>
 
            
